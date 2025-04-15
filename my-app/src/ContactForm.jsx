@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import apiUrl from './apiURL';
 
 function ContactForm() {
   const { id } = useParams(); // this is contact_id
@@ -21,7 +22,7 @@ function ContactForm() {
   useEffect(() => {
     if (isEditing) {
       setIsLoading(true);
-      fetch(`http://localhost:4000/contacts/${id}`)
+      fetch(`${apiUrl}/contacts/${id}`)
         .then((res) => {
           if (!res.ok) throw new Error('Failed to fetch contact');
           return res.json();
@@ -53,8 +54,8 @@ function ContactForm() {
 
     const method = isEditing ? 'PUT' : 'POST';
     const url = isEditing
-      ? `http://localhost:4000/contacts/${id}`
-      : 'http://localhost:4000/contacts';
+      ? `${apiUrl}/contacts/${id}`
+      : `${apiUrl}/contacts`;
 
     try {
       const response = await fetch(url, {

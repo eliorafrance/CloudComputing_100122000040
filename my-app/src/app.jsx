@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import './App.css';
+import './app.css';
 import Layout from './components/Layout';
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';

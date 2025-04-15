@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './contact.css';
+import apiUrl from './apiURL';
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
@@ -10,7 +11,7 @@ function ContactList() {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/contacts', {
+        const response = await fetch(`${apiUrl}/contacts`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
           },
@@ -35,7 +36,7 @@ function ContactList() {
         throw new Error('Contact ID is missing');
       }
 
-      const response = await fetch(`http://localhost:4000/contacts/${contact_id}`, {
+      const response = await fetch(`${apiUrl}/contacts/${contact_id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

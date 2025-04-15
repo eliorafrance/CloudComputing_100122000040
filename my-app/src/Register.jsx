@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
+import apiUrl from './apiURL';
 
 function Register() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function Register() {
     try {
       const { name, email, password, confirm_password } = userData; // ✅ use confirm_password
   
-      const response = await fetch('http://localhost:4000/signup', {
+      const response = await fetch(`${apiUrl}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

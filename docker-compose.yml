@@ -1,0 +1,18 @@
+
+
+services:
+  frontend:
+    build: ./my-app
+    ports:
+      - "4173:4173"  # Ensure Vite runs on port 4173
+    environment:
+      - VITE_API_URL=http://backend:4000  # Example of environment variable for connecting frontend to backend
+    depends_on:
+      - backend  # Ensure the backend is up before starting the frontend
+
+  backend:
+    build: ./New_folder
+    ports:
+      - "4500:4000"  # Expose backend at localhost:4500
+    env_file:
+      - ./New_folder/.env  # Backend environment variables (if any)
